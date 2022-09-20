@@ -8,6 +8,8 @@ namespace Assignment01.Models
 {
     internal class Contact
     {
+
+        //blueprint for our contact
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

@@ -17,7 +17,7 @@ namespace Assignment01.Services
     {
         
         ContactService contactService = new ContactService();
-        public void CreateContactMenu()
+        public void CreateContactMenu() //menu to create a contact
         {
             Contact contact = new Contact();
             Console.Write("First name: ");
@@ -33,7 +33,7 @@ namespace Assignment01.Services
             Console.Write("Country: ");
             contact.Country = Console.ReadLine();
 
-            contactService.CreateContact(contact);
+            contactService.CreateContact(contact); //calling the create contact method from our contactservice to add to list
             Console.WriteLine("Contact added");
             Console.ReadKey();
 

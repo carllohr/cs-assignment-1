@@ -19,10 +19,11 @@ namespace Assignment01.Services
     {
         public List<Contact> contacts = new List<Contact>();
         Contact contact = new Contact();
+        FileMethods fileMethod = new FileMethods();
         public void CreateContact(Contact contact)
         {
             contacts.Add(contact);
-            
+            fileMethod.Save(contacts);
         }
 
         public void DeleteContact()
@@ -37,11 +38,8 @@ namespace Assignment01.Services
 
         public void ViewContacts()
         {
-            foreach (Contact item in contacts)
-            {
-                Console.WriteLine($"{item.FirstName} {item.LastName}");
-                //Console.WriteLine($"{item.FirstName} {item.LastName} - {item.Email} - {item.PhoneNumber} - {item.City}, {item.Country}");
-            }
+            fileMethod.Read(ref contacts);
+           
 
         }
     }
