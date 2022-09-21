@@ -25,7 +25,7 @@ namespace Assignment01.Services
         public void Save(List<Contact> list)
         {
             using var sw = new StreamWriter(filePath);
-            sw.WriteLine(JsonConvert.SerializeObject(list));
+            sw.WriteLine(JsonConvert.SerializeObject(list, Formatting.Indented));
         }
 
         public void Read (ref List<Contact> list)
@@ -35,7 +35,7 @@ namespace Assignment01.Services
             {
                 using var sr = new StreamReader(filePath);
                 list = JsonConvert.DeserializeObject<List<Contact>>(sr.ReadToEnd());
-                
+               
                
             }
             catch

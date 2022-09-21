@@ -43,6 +43,7 @@ namespace Assignment01.Services
 
         public void MainMenu()
         {
+            contactService.GetContacts(); // call method to read contacts from json file
             Console.Clear();
             Console.WriteLine("1. Create contact");
             Console.WriteLine("2. View contacts");
