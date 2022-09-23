@@ -16,7 +16,21 @@ namespace Assignment01.Services
     internal class MenuMethods : IMenuMethods
     {
         
-        ContactService contactService = new ContactService();
+        
+        private FileMethods fileMethod;
+        private ContactService contactService;
+        
+
+
+        
+
+        public MenuMethods(string filePath)
+        {
+           contactService = new ContactService(filePath);
+        }
+
+
+
         public void CreateContactMenu() //menu to create a contact
         {
             Contact contact = new Contact();

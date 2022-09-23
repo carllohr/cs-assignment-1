@@ -16,7 +16,16 @@ namespace Assignment01.Services
     }
     internal class FileMethods : IFileMethods
     {
-        private string filePath = ($@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\contacts.json"); 
+
+        //public string filePath = ($@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\contacts.json"); 
+        private string _filePath;
+        public FileMethods(string filePath)
+        {
+            _filePath = filePath;
+        }
+
+       
+
         public void Delete()
         {
             throw new NotImplementedException();
@@ -24,7 +33,7 @@ namespace Assignment01.Services
 
         public void Save(List<Contact> list)
         {
-            using var sw = new StreamWriter(filePath);
+            using var sw = new StreamWriter(_filePath);
             sw.WriteLine(JsonConvert.SerializeObject(list, Formatting.Indented));
         }
 
@@ -33,7 +42,7 @@ namespace Assignment01.Services
             
             try
             {
-                using var sr = new StreamReader(filePath);
+                using var sr = new StreamReader(_filePath);
                 list = JsonConvert.DeserializeObject<List<Contact>>(sr.ReadToEnd());
                
                

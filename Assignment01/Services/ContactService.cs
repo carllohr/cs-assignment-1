@@ -17,12 +17,19 @@ namespace Assignment01.Services
     }
     internal class ContactService : IContactService
     {
-        public List<Contact> contacts = new List<Contact>();
+        public List<Contact> contacts;
         Contact contact = new Contact();
-        FileMethods fileMethod = new FileMethods();
+        FileMethods fileMethod;
+        
+        public ContactService(string filePath)
+        {
+            fileMethod = new FileMethods(filePath);
+            contacts = new List<Contact>();
+        }
 
         public IEnumerable<Contact> GetContacts() // method to get list from json file
         {
+            
             fileMethod.Read(ref contacts);
             return contacts;
         }
@@ -45,14 +52,16 @@ namespace Assignment01.Services
 
         public void ViewContacts()
         {
-            // get list from json file
-            
-            //loop through list to print contacts to console
-            foreach (var item in contacts)
-            {
-                Console.WriteLine($"{item.FirstName} {item.LastName}");
+            try
+            {  //loop through list to print contacts to console
+                foreach (var item in contacts)
+                {
+                    Console.WriteLine($"{item.FirstName} {item.LastName}");
+                }
+
             }
-            
+
+            catch { }
            
 
         }
