@@ -12,7 +12,7 @@ namespace Assignment01.Services
         public void CreateContact(Contact contact);
 
         public void ViewContact(string option);
-        public void UpdateContact();
+        public void UpdateContact(Contact contactExist);
         public void DeleteContact();
         public void ViewContacts();
         public IEnumerable<Contact> GetContacts();
@@ -47,9 +47,53 @@ namespace Assignment01.Services
             throw new NotImplementedException();
         }
 
-        public void UpdateContact()
+        public void UpdateContact(Contact contactExist)
         {
-            throw new NotImplementedException();
+            Console.Clear();
+            Console.WriteLine("What information would you like to update?");
+            Console.WriteLine("1. First name");
+            Console.WriteLine("2. Last name");
+            Console.WriteLine("3. Email");
+            Console.WriteLine("4. Phone number");
+            Console.WriteLine("5. City");
+            Console.WriteLine("6. Country");
+
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    Console.Write("Enter new first name: ");
+                    contactExist.FirstName = Console.ReadLine();
+                    break;
+                case "2":
+                    Console.Write("Enter new last name: ");
+                    contactExist.LastName = Console.ReadLine();
+                    break;
+                case "3":
+                    Console.Write("Enter new email: ");
+                    contactExist.Email = Console.ReadLine();
+                    break;
+                case "4":
+                    Console.Write("Enter new phone number: ");
+                    contactExist.PhoneNumber = Console.ReadLine();
+                    break;
+                case "5":
+                    Console.Write("Enter new city: ");
+                    contactExist.City = Console.ReadLine();
+                    break;
+                case "6":
+                    Console.Write("Enter new country: ");
+                    contactExist.Country = Console.ReadLine();
+                    break;
+                default:
+                    Console.WriteLine("Invalid option");
+                    break;
+                        
+
+               
+            }
+            fileMethod.Save(contacts);
+            Console.Clear();
+
         }
 
         public void ViewContacts()
@@ -70,20 +114,33 @@ namespace Assignment01.Services
 
         public void ViewContact(string option)
         {
-            bool contactExist = false; // use this bool var for the case when input does not match any contact
-            foreach (var item in contacts)
+            var contactExist = contacts.FirstOrDefault(x => x.FullName == option);
+
+
+
+            if(contactExist != null)
             {
-                if (option == item.FullName)
+                Console.WriteLine($"{contactExist.FullName} {contactExist.Email} {contactExist.PhoneNumber} - {contactExist.City}, {contactExist.Country}");
+                Console.WriteLine("1. Update contact");
+                Console.WriteLine("2. Delete contact");
+
+                switch (Console.ReadLine())
                 {
-                    Console.Clear();
-                    Console.WriteLine($"{item.FirstName} {item.LastName}, {item.Email} - {item.PhoneNumber} - {item.City}, {item.Country}");
-                    contactExist = true;
+                    case "1":
+                        UpdateContact(contactExist);
+                        break;
                 }
+
+
             }
-            if (!contactExist)
+            else
             {
                 Console.WriteLine("Unable to find contact");
             }
+            // use this bool var for the case when input does not match any contact
+            
+            
+           
             
         }
     }

@@ -62,7 +62,7 @@ namespace Assignment01.Services
             Console.Clear();
             Console.WriteLine("1. Create contact");
             Console.WriteLine("2. View contacts");
-            Console.WriteLine("3. Exit application");
+            Console.WriteLine("3. View detailed contact");
             var option = Console.ReadLine();
             switch (option) {
                 case "1":
