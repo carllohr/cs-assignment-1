@@ -114,7 +114,8 @@ namespace Assignment01.Services
 
         public void ViewContact(string option)
         {
-            var contactExist = contacts.FirstOrDefault(x => x.FullName == option);
+            // find if the contact exists by finding property of the contact element in the list and store it in a Contact object variable
+            var contactExist = contacts.FirstOrDefault(x => x.FullName == option); 
 
 
 
