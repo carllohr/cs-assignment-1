@@ -12,6 +12,7 @@ namespace Assignment01.Services
         public void MainMenu();
         public void CreateContactMenu();
         public void ViewContactsMenu();
+        public void ViewContactMenu();
     }
     internal class MenuMethods : IMenuMethods
     {
@@ -72,9 +73,23 @@ namespace Assignment01.Services
                     Console.Clear();
                     ViewContactsMenu();
                     break;
+                case "3":
+                    Console.Clear();
+                    ViewContactMenu();
+                    break;
             }
+
             
            
+        }
+
+        public void ViewContactMenu()
+        {
+            Console.Write("Enter full name of contact you wish to see: ");
+            var option = Console.ReadLine();
+            contactService.ViewContact(option);
+            Console.ReadKey();
+
         }
 
         public void ViewContactsMenu()

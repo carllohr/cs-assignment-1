@@ -10,6 +10,8 @@ namespace Assignment01.Services
     internal interface IContactService
     {
         public void CreateContact(Contact contact);
+
+        public void ViewContact(string option);
         public void UpdateContact();
         public void DeleteContact();
         public void ViewContacts();
@@ -64,6 +66,25 @@ namespace Assignment01.Services
             catch { }
            
 
+        }
+
+        public void ViewContact(string option)
+        {
+            bool contactExist = false; // use this bool var for the case when input does not match any contact
+            foreach (var item in contacts)
+            {
+                if (option == item.FullName)
+                {
+                    Console.Clear();
+                    Console.WriteLine($"{item.FirstName} {item.LastName}, {item.Email} - {item.PhoneNumber} - {item.City}, {item.Country}");
+                    contactExist = true;
+                }
+            }
+            if (!contactExist)
+            {
+                Console.WriteLine("Unable to find contact");
+            }
+            
         }
     }
 }

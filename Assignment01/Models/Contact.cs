@@ -16,5 +16,8 @@ namespace Assignment01.Models
         public string PhoneNumber { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
+
+        // make fullname to be able to look for specific contact easier in our viewcontact method
+        public string FullName => $"{FirstName} {LastName}";
     }
 }
