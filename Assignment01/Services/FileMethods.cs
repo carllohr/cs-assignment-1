@@ -11,24 +11,14 @@ namespace Assignment01.Services
     internal interface IFileMethods
     {
         public void Save(List<Contact> list);
-        public void Delete();
         public void Read(ref List<Contact> list);
     }
     internal class FileMethods : IFileMethods
     {
-
-        //public string filePath = ($@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\contacts.json"); 
         private string _filePath;
         public FileMethods(string filePath)
         {
             _filePath = filePath;
-        }
-
-       
-
-        public void Delete()
-        {
-            throw new NotImplementedException();
         }
 
         public void Save(List<Contact> list)
@@ -44,8 +34,6 @@ namespace Assignment01.Services
             {
                 using var sr = new StreamReader(_filePath);
                 list = JsonConvert.DeserializeObject<List<Contact>>(sr.ReadToEnd());
-               
-               
             }
             catch
             {

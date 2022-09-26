@@ -13,7 +13,7 @@ namespace Assignment01.Services
 
         public void ViewContact(string option);
         public void UpdateContact(Contact contactExist);
-        public void DeleteContact();
+        public void DeleteContact(Contact contactExist);
         public void ViewContacts();
         public IEnumerable<Contact> GetContacts();
     }
@@ -42,9 +42,13 @@ namespace Assignment01.Services
             fileMethod.Save(contacts);
         }
 
-        public void DeleteContact()
+        public void DeleteContact(Contact contactExist)
         {
-            throw new NotImplementedException();
+            Console.Clear();
+            Console.WriteLine("Deleting contact..");
+            contacts.Remove(contactExist);
+            fileMethod.Save(contacts);
+            Console.WriteLine("Contact successfully deleted");
         }
 
         // method updatecontact takes contactExist from viewcontact method as argument
@@ -101,14 +105,9 @@ namespace Assignment01.Services
                     Console.WriteLine("Invalid option");
                     Console.ReadKey();
                     break;
-                        
-
-               
             }
             fileMethod.Save(contacts);
             Console.Clear();
-
-
         }
 
         public void ViewContacts()
@@ -121,10 +120,9 @@ namespace Assignment01.Services
                 }
 
             }
-
-            catch { }
-           
-
+            catch 
+            { 
+            }
         }
 
         public void ViewContact(string option)
@@ -147,7 +145,7 @@ namespace Assignment01.Services
                         UpdateContact(contactExist);
                         break;
                     case "2":
-                        DeleteContact();
+                        DeleteContact(contactExist);
                         break;
                     default:
                         Console.WriteLine("Returning to main menu");
@@ -160,11 +158,6 @@ namespace Assignment01.Services
             {
                 Console.WriteLine("Unable to find contact");
             }
-            // use this bool var for the case when input does not match any contact
-            
-            
-           
-            
         }
     }
 }
