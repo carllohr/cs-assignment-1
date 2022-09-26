@@ -16,15 +16,8 @@ namespace Assignment01.Services
     }
     internal class MenuMethods : IMenuMethods
     {
-        
-        
-        private FileMethods fileMethod;
         private ContactService contactService;
         
-
-
-        
-
         public MenuMethods(string filePath)
         {
            contactService = new ContactService(filePath);

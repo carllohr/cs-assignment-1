@@ -10,12 +10,12 @@ namespace Assignment01.Models
     {
 
         //blueprint for our contact
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
+        public string FirstName { get; set; } = null!;
+        public string LastName { get; set; } = null!;
+        public string Email { get; set; } = null!;
+        public string PhoneNumber { get; set; } = null!;
+        public string City { get; set; } = null!;
+        public string Country { get; set; } = null!;
 
         // make fullname to be able to look for specific contact easier in our viewcontact method
         public string FullName => $"{FirstName} {LastName}";
