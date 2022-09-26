@@ -47,45 +47,59 @@ namespace Assignment01.Services
             throw new NotImplementedException();
         }
 
+        // method updatecontact takes contactExist from viewcontact method as argument
         public void UpdateContact(Contact contactExist)
         {
             Console.Clear();
             Console.WriteLine("What information would you like to update?");
-            Console.WriteLine("1. First name");
-            Console.WriteLine("2. Last name");
-            Console.WriteLine("3. Email");
-            Console.WriteLine("4. Phone number");
-            Console.WriteLine("5. City");
-            Console.WriteLine("6. Country");
+            Console.WriteLine($"1. First name - {contactExist.FirstName}");
+            Console.WriteLine($"2. Last name - {contactExist.LastName}");
+            Console.WriteLine($"3. Email - {contactExist.Email}");
+            Console.WriteLine($"4. Phone number - {contactExist.PhoneNumber}");
+            Console.WriteLine($"5. City - {contactExist.City}");
+            Console.WriteLine($"6. Country - {contactExist.Country}");
 
             switch (Console.ReadLine())
             {
                 case "1":
                     Console.Write("Enter new first name: ");
                     contactExist.FirstName = Console.ReadLine();
+                    Console.WriteLine($"New first name '{contactExist.FirstName}' saved");
+                    Console.ReadKey();
                     break;
                 case "2":
                     Console.Write("Enter new last name: ");
                     contactExist.LastName = Console.ReadLine();
+                    Console.WriteLine($"New last name '{contactExist.LastName}' saved");
+                    Console.ReadKey();
                     break;
                 case "3":
                     Console.Write("Enter new email: ");
                     contactExist.Email = Console.ReadLine();
+                    Console.WriteLine($"New email '{contactExist.Email}' saved");
+                    Console.ReadKey();
                     break;
                 case "4":
                     Console.Write("Enter new phone number: ");
                     contactExist.PhoneNumber = Console.ReadLine();
+                    Console.WriteLine($"New phone number '{contactExist.PhoneNumber}' saved");
+                    Console.ReadKey();
                     break;
                 case "5":
                     Console.Write("Enter new city: ");
                     contactExist.City = Console.ReadLine();
+                    Console.WriteLine($"New city '{contactExist.City}' saved");
+                    Console.ReadKey();
                     break;
                 case "6":
                     Console.Write("Enter new country: ");
                     contactExist.Country = Console.ReadLine();
+                    Console.WriteLine($"New country '{contactExist.Country}' saved");
+                    Console.ReadKey();
                     break;
                 default:
                     Console.WriteLine("Invalid option");
+                    Console.ReadKey();
                     break;
                         
 
@@ -93,6 +107,7 @@ namespace Assignment01.Services
             }
             fileMethod.Save(contacts);
             Console.Clear();
+
 
         }
 
@@ -118,17 +133,24 @@ namespace Assignment01.Services
             var contactExist = contacts.FirstOrDefault(x => x.FullName == option); 
 
 
-
+            // if user input equals an existing user, show detailed information and give options to update or delete contact
             if(contactExist != null)
             {
                 Console.WriteLine($"{contactExist.FullName} {contactExist.Email} {contactExist.PhoneNumber} - {contactExist.City}, {contactExist.Country}");
                 Console.WriteLine("1. Update contact");
                 Console.WriteLine("2. Delete contact");
+                Console.WriteLine("\nTo return to main menu, enter any value that is not 1 or 2 and then hit any button");
 
                 switch (Console.ReadLine())
                 {
                     case "1":
                         UpdateContact(contactExist);
+                        break;
+                    case "2":
+                        DeleteContact();
+                        break;
+                    default:
+                        Console.WriteLine("Returning to main menu");
                         break;
                 }
 
