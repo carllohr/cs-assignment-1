@@ -63,6 +63,7 @@ namespace Assignment01.Services
             Console.WriteLine("1. Create contact");
             Console.WriteLine("2. View contacts");
             Console.WriteLine("3. View detailed contact");
+            Console.WriteLine("4. Exit application");
             var option = Console.ReadLine();
             switch (option) {
                 case "1":
@@ -77,10 +78,15 @@ namespace Assignment01.Services
                     Console.Clear();
                     ViewContactMenu();
                     break;
+                case "4":
+                    Console.Clear();
+                    Console.WriteLine("Exiting..");
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Invalid input");
+                    break;
             }
-
-            
-           
         }
 
         public void ViewContactMenu()

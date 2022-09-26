@@ -1,7 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-using Assignment01.Services;
+﻿using Assignment01.Services;
 
-Console.WriteLine("Hello, World!");
+// enter wanted file path, change file here
 MenuMethods menu = new MenuMethods($@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\contacts.json");
 while (true)
 {
