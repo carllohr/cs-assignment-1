@@ -107,9 +107,9 @@ namespace Assignment01.Services
         {
             try
             {  //loop through list to print contacts to console
-                foreach (var item in contacts)
+                for(int i = 0; i < contacts.Count; i++)
                 {
-                    Console.WriteLine($"{item.FirstName} {item.LastName}");
+                    Console.WriteLine($"{i + 1}. {contacts[i].FirstName} {contacts[i].LastName}");
                 }
 
             }
