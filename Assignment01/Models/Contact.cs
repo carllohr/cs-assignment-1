@@ -17,7 +17,7 @@ namespace Assignment01.Models
         public string City { get; set; } = null!;
         public string Country { get; set; } = null!;
 
-        // make fullname to be able to look for specific contact easier in our viewcontact method
+        // make fullname for simplicity
         public string FullName => $"{FirstName} {LastName}";
     }
 }

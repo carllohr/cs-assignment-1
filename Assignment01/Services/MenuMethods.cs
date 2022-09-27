@@ -13,6 +13,7 @@ namespace Assignment01.Services
         public void CreateContactMenu();
         public void ViewContactsMenu();
         public void ViewContactMenu();
+        public void ExitMenu();
     }
     internal class MenuMethods : IMenuMethods
     {
@@ -49,6 +50,12 @@ namespace Assignment01.Services
             
         }
 
+        public void ExitMenu()
+        {
+            Console.WriteLine("Exiting application..");
+            Environment.Exit(0);
+        }
+
         public void MainMenu()
         {
             contactService.GetContacts(); // call method to read contacts from json file
@@ -73,8 +80,7 @@ namespace Assignment01.Services
                     break;
                 case "4":
                     Console.Clear();
-                    Console.WriteLine("Exiting..");
-                    Environment.Exit(0);
+                    ExitMenu();
                     break;
                 default:
                     Console.WriteLine("Invalid input");
