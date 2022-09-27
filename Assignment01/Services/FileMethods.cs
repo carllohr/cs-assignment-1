@@ -23,8 +23,15 @@ namespace Assignment01.Services
 
         public void Save(List<Contact> list)
         {
-            using var sw = new StreamWriter(_filePath);
-            sw.WriteLine(JsonConvert.SerializeObject(list, Formatting.Indented));
+            try
+            {
+                using var sw = new StreamWriter(_filePath);
+                sw.WriteLine(JsonConvert.SerializeObject(list, Formatting.Indented));
+            }
+            catch
+            {
+
+            }
         }
 
         public void Read (ref List<Contact> list)

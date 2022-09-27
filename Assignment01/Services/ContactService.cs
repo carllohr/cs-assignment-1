@@ -69,45 +69,38 @@ namespace Assignment01.Services
                     Console.Write("Enter new first name: ");
                     contactExist.FirstName = Console.ReadLine();
                     Console.WriteLine($"New first name '{contactExist.FirstName}' saved");
-                    Console.ReadKey();
                     break;
                 case "2":
                     Console.Write("Enter new last name: ");
                     contactExist.LastName = Console.ReadLine();
                     Console.WriteLine($"New last name '{contactExist.LastName}' saved");
-                    Console.ReadKey();
                     break;
                 case "3":
                     Console.Write("Enter new email: ");
                     contactExist.Email = Console.ReadLine();
                     Console.WriteLine($"New email '{contactExist.Email}' saved");
-                    Console.ReadKey();
                     break;
                 case "4":
                     Console.Write("Enter new phone number: ");
                     contactExist.PhoneNumber = Console.ReadLine();
                     Console.WriteLine($"New phone number '{contactExist.PhoneNumber}' saved");
-                    Console.ReadKey();
                     break;
                 case "5":
                     Console.Write("Enter new city: ");
                     contactExist.City = Console.ReadLine();
                     Console.WriteLine($"New city '{contactExist.City}' saved");
-                    Console.ReadKey();
                     break;
                 case "6":
                     Console.Write("Enter new country: ");
                     contactExist.Country = Console.ReadLine();
                     Console.WriteLine($"New country '{contactExist.Country}' saved");
-                    Console.ReadKey();
                     break;
                 default:
                     Console.WriteLine("Invalid option");
-                    Console.ReadKey();
                     break;
             }
             fileMethod.Save(contacts);
-            Console.Clear();
+            
         }
 
         public void ViewContacts()
