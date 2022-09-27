@@ -84,10 +84,20 @@ namespace Assignment01.Services
 
         public void ViewContactMenu()
         {
-            Console.Write("Enter full name of contact you wish to see: ");
-            var option = Console.ReadLine();
-            contactService.ViewContact(option);
-            Console.ReadKey();
+            Console.WriteLine("To find the list number of the contact, go back to the main menu and select view contacts");
+            Console.Write("\nEnter list number of contact you want to see: ");
+            try
+            {
+                var option = int.Parse(Console.ReadLine());
+                contactService.ViewContact(option);
+                Console.ReadKey();
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input, you must enter the list number of the contact you want to see");
+                Console.ReadKey();
+            }
+
 
         }
 

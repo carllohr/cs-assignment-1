@@ -11,7 +11,7 @@ namespace Assignment01.Services
     {
         public void CreateContact(Contact contact);
 
-        public void ViewContact(string option);
+        public void ViewContact(int option);
         public void UpdateContact(Contact contactExist);
         public void DeleteContact(Contact contactExist);
         public void ViewContacts();
@@ -51,8 +51,7 @@ namespace Assignment01.Services
             Console.WriteLine("Contact successfully deleted");
         }
 
-        // method updatecontact takes contactExist from viewcontact method as argument
-        public void UpdateContact(Contact contactExist)
+        public void UpdateContact(Contact contactExist) // method updatecontact takes contactExist from viewcontact method as argument
         {
             Console.Clear();
             Console.WriteLine("What information would you like to update?");
@@ -118,39 +117,44 @@ namespace Assignment01.Services
             }
         }
 
-        public void ViewContact(string option)
+        public void ViewContact(int option)
         {
-            // find if the contact exists by finding property of the contact element in the list and store it in a Contact object variable
-            var contactExist = contacts.FirstOrDefault(x => x.FullName == option); 
+            // find contact equal to number input, aka the number in the list as the user sees it by taking using the input as index and subtracting one
+            // earlier used var contactExist = contacts.FirstOrDefault(x => x.FullName == option) but changed to make it to list[option-1] instead for aestethic reasons
 
-
-            // if user input equals an existing user, show detailed information and give options to update or delete contact
-            if(contactExist != null)
+            try
             {
-                Console.WriteLine($"{contactExist.FullName} {contactExist.Email} {contactExist.PhoneNumber} - {contactExist.City}, {contactExist.Country}");
-                Console.WriteLine("1. Update contact");
-                Console.WriteLine("2. Delete contact");
-                Console.WriteLine("\nTo return to main menu, enter any value that is not 1 or 2 and then hit any button");
+                var contactExist = contacts[option - 1];
 
-                switch (Console.ReadLine())
+
+
+                // if user input equals an existing user, show detailed information and give options to update or delete contact
+                if (contactExist != null)
                 {
-                    case "1":
-                        UpdateContact(contactExist);
-                        break;
-                    case "2":
-                        DeleteContact(contactExist);
-                        break;
-                    default:
-                        Console.WriteLine("Returning to main menu");
-                        break;
+                    Console.Clear();
+                    Console.WriteLine($"Contact number {option}: {contactExist.FullName} - {contactExist.Email} {contactExist.PhoneNumber} - {contactExist.City}, {contactExist.Country}");
+                    Console.WriteLine("1. Update contact");
+                    Console.WriteLine("2. Delete contact");
+                    Console.WriteLine("\nTo return to main menu, enter any value that is not 1 or 2 and then hit any button");
+
+                    switch (Console.ReadLine())
+                    {
+                        case "1":
+                            UpdateContact(contactExist);
+                            break;
+                        case "2":
+                            DeleteContact(contactExist);
+                            break;
+                        default:
+                            Console.WriteLine("Returning to main menu");
+                            break;
+                    }
+
+
                 }
-
-
+             
             }
-            else
-            {
-                Console.WriteLine("Unable to find contact");
-            }
+            catch { Console.WriteLine("Unable to find contact"); }
         }
     }
 }
