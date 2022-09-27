@@ -155,6 +155,6 @@ namespace Assignment01.Services
              
             }
             catch { Console.WriteLine("Unable to find contact"); }
-        }
+        }//method to view contact, takes an integer as argument from viewcontactmenu input
     }
 }
