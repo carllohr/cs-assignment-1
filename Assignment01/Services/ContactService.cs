@@ -115,6 +115,7 @@ namespace Assignment01.Services
             catch 
             { 
             }
+            Console.WriteLine("\nPress any button to return to main menu");
         }
 
         public void ViewContact(int option)
